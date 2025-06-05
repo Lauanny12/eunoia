@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eunoia - Portfólio de Poesias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/contato.css" />
+  <link rel="stylesheet" href="css/geral.css" />
+</head>
+<body>
+
+  <nav class="menu">
+    <a href="index.html#inicio">Início</a>
+    <a href="poemas.html">Poemas</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
+  <!-- Formulário de Contato -->
+  <section class="contato-formulario">
+    <h2>Entre em contato</h2>
+    <p>Preencha os campos abaixo para nos enviar uma mensagem.</p>
+    <form id="formContato">
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="tel" name="telefone" placeholder="Telefone" required>
+      <textarea name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <script>
+    // Validação e envio manual com redirecionamento
+    document.getElementById('formContato').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const email = document.getElementById('email').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        alert('Email inválido');
+        return;
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        await fetch("https://formsubmit.co/el/toromi", {
+          method: "POST",
+          body: formData
+        });
+        window.location.href = "obg.html";
+      } catch (error) {
+        alert("Erro ao enviar formulário. Tente novamente.");
+      }
+    });
+  </script>
+
+  <footer class="rodape-video">
+    <video autoplay muted loop playsinline>
+      <source src="videos/video1.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeo HTML5.
+    </video>
+    <div class="conteudo-rodape">
+      <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
+      <p class="assinatura">Eunoia • 2025</p>
+    </div>
+  </footer>
+</body>
+</html>
