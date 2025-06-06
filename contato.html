@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eunoia - Portfólio de Poesias</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
+  <title>Contato - Eunoia</title>
   <link rel="stylesheet" href="css/contato.css" />
   <link rel="stylesheet" href="css/geral.css" />
   <style>
@@ -13,6 +12,16 @@
       font-size: 0.9em;
       margin: 4px 0 8px 0;
       display: block;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
     }
   </style>
 </head>
@@ -25,84 +34,102 @@
     <a href="contato.html">Contato</a>
   </nav>
 
-  <!-- Formulário de Contato -->
   <section class="contato-formulario">
     <h2>Entre em contato</h2>
-    <p>Preencha os campos abaixo para nos enviar uma mensagem.</p>
+    <p>Envie sua mensagem ou poesia! 😊</p>
     <form id="formContato">
-      <input type="text" name="nome" id="nome" placeholder="Nome" required>
+      <label for="nome">Nome completo (Ex: Fulano De Tal)</label>
+      <input type="text" id="nome" name="nome" placeholder="Ex: Lauanny Reis Silva" required>
       <span class="erro" id="erroNome"></span>
 
-      <input type="email" name="email" id="email" placeholder="Email" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Ex: fulano@email.com" required>
       <span class="erro" id="erroEmail"></span>
 
-      <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
+      <label for="telefone">Telefone (opcional)</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="Ex: (63) 91234-5678">
       <span class="erro" id="erroTelefone"></span>
 
-      <textarea name="mensagem" id="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+      <label for="mensagem">Mensagem / Poesia</label>
+      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
       <span class="erro" id="erroMensagem"></span>
+
+      <label for="anonimo">Você quer que seu nome apareça no poema?</label>
+      <select id="anonimo" name="anonimo" required>
+        <option value="">Escolha uma opção</option>
+        <option value="Sim">Sim, pode colocar meu nome.</option>
+        <option value="Anônimo">Prefiro ser anônimo(a).</option>
+      </select>
+      <span class="erro" id="erroAnonimo"></span>
 
       <button type="submit">Enviar</button>
     </form>
   </section>
 
   <script>
-    document.getElementById('formContato').addEventListener('submit', async function (e) {
+    document.getElementById("formContato").addEventListener("submit", async function (e) {
       e.preventDefault();
 
       // Campos
-      const nome = document.getElementById('nome');
-      const email = document.getElementById('email');
-      const telefone = document.getElementById('telefone');
-      const mensagem = document.getElementById('mensagem');
+      const nome = document.getElementById("nome");
+      const email = document.getElementById("email");
+      const telefone = document.getElementById("telefone");
+      const mensagem = document.getElementById("mensagem");
+      const anonimo = document.getElementById("anonimo");
 
-      // Spans de erro
-      const erroNome = document.getElementById('erroNome');
-      const erroEmail = document.getElementById('erroEmail');
-      const erroTelefone = document.getElementById('erroTelefone');
-      const erroMensagem = document.getElementById('erroMensagem');
+      // Erros
+      const erroNome = document.getElementById("erroNome");
+      const erroEmail = document.getElementById("erroEmail");
+      const erroTelefone = document.getElementById("erroTelefone");
+      const erroMensagem = document.getElementById("erroMensagem");
+      const erroAnonimo = document.getElementById("erroAnonimo");
 
       // Resetar mensagens
-      erroNome.textContent = '';
-      erroEmail.textContent = '';
-      erroTelefone.textContent = '';
-      erroMensagem.textContent = '';
+      [erroNome, erroEmail, erroTelefone, erroMensagem, erroAnonimo].forEach(el => el.textContent = "");
 
       let valido = true;
 
-      // Validações
-      if (nome.value.trim() === '') {
-        erroNome.textContent = 'Por favor, insira seu nome.';
+      // Validação do nome (mínimo 2 palavras, cada uma com inicial maiúscula)
+      const nomeCompletoRegex = /^([A-ZÁÉÍÓÚÂÊÎÔÛÃÕ][a-záéíóúâêîôûãõç]+)(\s[A-ZÁÉÍÓÚÂÊÎÔÛÃÕ][a-záéíóúâêîôûãõç]+)+$/;
+      if (!nomeCompletoRegex.test(nome.value.trim())) {
+        erroNome.textContent = "Insira seu nome completo com iniciais maiúsculas. Ex: Lauanny Reis Silva";
         valido = false;
       }
 
+      // Validação do email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email.value)) {
-        erroEmail.textContent = 'Email inválido.';
+      if (email.value.trim() === "") {
+        erroEmail.textContent = "Email é obrigatório.";
+        valido = false;
+      } else if (!emailRegex.test(email.value)) {
+        erroEmail.textContent = "Formato de email inválido.";
         valido = false;
       }
 
-      const telRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
-      if (!telRegex.test(telefone.value)) {
-        erroTelefone.textContent = 'Telefone inválido. Use o formato (99) 99999-9999.';
-        valido = false;
-      }
-
+      // Validação da mensagem
       if (mensagem.value.trim().length < 5) {
-        erroMensagem.textContent = 'Mensagem muito curta.';
+        erroMensagem.textContent = "Mensagem muito curta.";
         valido = false;
       }
 
+      // Validação do select
+      if (anonimo.value === "") {
+        erroAnonimo.textContent = "Por favor, selecione se deseja ser anônimo(a) ou não.";
+        valido = false;
+      }
+
+      // Se houver erros, não envia
       if (!valido) return;
 
-      // Se tudo estiver válido, envia com FormSubmit
+      // Envia para o FormSubmit
       const formData = new FormData(this);
+
       try {
         await fetch("https://formsubmit.co/lauanny.silva2@estudante.ifto.edu.br", {
           method: "POST",
           body: formData
         });
-        window.location.href = "obg.html"; // Página de agradecimento
+        window.location.href = "obg.html"; // Redireciona para página de agradecimento
       } catch (error) {
         alert("Erro ao enviar. Tente novamente mais tarde.");
       }
@@ -119,5 +146,6 @@
       <p class="assinatura">Eunoia • 2025</p>
     </div>
   </footer>
+
 </body>
 </html>
