@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gratidão - Eunoia</title>
-  <link rel="stylesheet" href="css/obg.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mensagem Enviada ✨</title>
+  <link rel="stylesheet" href="obg.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <header class="cabecalho">
-    <h1 class="titulo">Eunoia</h1>
-    <p class="frase">onde a alma escreve o que o coração sente.</p>
-  </header>
 
   <nav class="menu">
     <a href="index.html">Início</a>
@@ -20,41 +15,22 @@
     <a href="sobre.html">Sobre</a>
     <a href="contato.html">Contato</a>
   </nav>
-
-  <main>
-    <section class="mensagem-sucesso">
-      <div class="cartinha">
-        <p class="poema">
-🌿 Sua mensagem foi como brisa suave  
-tocando a alma deste jardim de palavras.  
-
-Ela pousou aqui — com leveza,  
-como uma borboleta em manhã calma.  
-
-Seus versos, dúvidas ou afetos  
-já fazem parte deste refúgio poético.  
-
-Obrigada por confiar, por sentir,  
-por deixar um pedacinho de você aqui. ✨
-
-Em breve, o retorno virá —  
-como quem devolve flores ao coração que plantou. 💌
-        </p>
-        <a href="index.html" class="botao">↩ Voltar ao Início</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="rodape-video">
-    <video autoplay muted loop playsinline>
-      <source src="videos/video1.mp4" type="video/mp4" />
-      Seu navegador não suporta vídeo HTML5.
-    </video>
-    <div class="conteudo-rodape">
-      <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
-      <p class="assinatura">Eunoia • 2025</p>
+  
+  <section class="mensagem-enviada">
+    <div class="caixa-mensagem fade-in">
+      <div class="emoji">💌</div>
+      <h2>Obrigada pela sua mensagem!</h2>
+      <p>Recebemos com carinho o seu recado.<br>Em breve entraremos em contato.</p>
+      <a href="index.html" class="botao-voltar">Voltar para a página inicial</a>
     </div>
-  </footer>
+  </section>
 
+  <script>
+    // ✨ Interatividade suave
+    document.addEventListener('DOMContentLoaded', () => {
+      const caixa = document.querySelector('.caixa-mensagem');
+      caixa.classList.add('animada');
+    });
+  </script>
 </body>
 </html>
