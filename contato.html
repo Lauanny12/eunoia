@@ -7,6 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/contato.css" />
   <link rel="stylesheet" href="css/geral.css" />
+  <style>
+    .erro {
+      color: #d10000;
+      font-size: 0.9em;
+      margin: 4px 0 8px 0;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,38 +30,81 @@
     <h2>Entre em contato</h2>
     <p>Preencha os campos abaixo para nos enviar uma mensagem.</p>
     <form id="formContato">
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="email" id="email" name="email" placeholder="Email" required>
-      <input type="tel" name="telefone" placeholder="Telefone" required>
-      <textarea name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+      <input type="text" name="nome" id="nome" placeholder="Nome" required>
+      <span class="erro" id="erroNome"></span>
+
+      <input type="email" name="email" id="email" placeholder="Email" required>
+      <span class="erro" id="erroEmail"></span>
+
+      <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
+      <span class="erro" id="erroTelefone"></span>
+
+      <textarea name="mensagem" id="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+      <span class="erro" id="erroMensagem"></span>
+
       <button type="submit">Enviar</button>
     </form>
   </section>
 
   <script>
-    // Validação e envio manual com redirecionamento
     document.getElementById('formContato').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const form = e.target;
-      const email = document.getElementById('email').value;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // Campos
+      const nome = document.getElementById('nome');
+      const email = document.getElementById('email');
+      const telefone = document.getElementById('telefone');
+      const mensagem = document.getElementById('mensagem');
 
-      if (!emailRegex.test(email)) {
-        alert('Email inválido');
-        return;
+      // Spans de erro
+      const erroNome = document.getElementById('erroNome');
+      const erroEmail = document.getElementById('erroEmail');
+      const erroTelefone = document.getElementById('erroTelefone');
+      const erroMensagem = document.getElementById('erroMensagem');
+
+      // Resetar mensagens
+      erroNome.textContent = '';
+      erroEmail.textContent = '';
+      erroTelefone.textContent = '';
+      erroMensagem.textContent = '';
+
+      let valido = true;
+
+      // Validações
+      if (nome.value.trim() === '') {
+        erroNome.textContent = 'Por favor, insira seu nome.';
+        valido = false;
       }
 
-      const formData = new FormData(form);
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value)) {
+        erroEmail.textContent = 'Email inválido.';
+        valido = false;
+      }
 
+      const telRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+      if (!telRegex.test(telefone.value)) {
+        erroTelefone.textContent = 'Telefone inválido. Use o formato (99) 99999-9999.';
+        valido = false;
+      }
+
+      if (mensagem.value.trim().length < 5) {
+        erroMensagem.textContent = 'Mensagem muito curta.';
+        valido = false;
+      }
+
+      if (!valido) return;
+
+      // Se tudo estiver válido, envia com FormSubmit
+      const formData = new FormData(this);
       try {
-        await fetch("https://formsubmit.co/el/toromi", {
+        await fetch("https://formsubmit.co/lauanny.silva2@estudante.ifto.edu.br", {
           method: "POST",
           body: formData
         });
-        window.location.href = "obg.html";
+        window.location.href = "obg.html"; // Página de agradecimento
       } catch (error) {
-        alert("Erro ao enviar formulário. Tente novamente.");
+        alert("Erro ao enviar. Tente novamente mais tarde.");
       }
     });
   </script>
