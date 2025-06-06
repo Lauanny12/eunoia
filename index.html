@@ -34,6 +34,21 @@
     </p>
   </main>
 
+  <div class="particles-container"></div>
+
+<script>
+  const particlesContainer = document.querySelector('.particles-container');
+
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.animationDelay = `${Math.random() * 10}s`;
+    particle.style.animationDuration = `${5 + Math.random() * 10}s`;
+    particlesContainer.appendChild(particle);
+  }
+</script>
+
   <footer class="rodape-video">
     <video autoplay muted loop playsinline>
       <source src="videos/video1.mp4" type="video/mp4" />
