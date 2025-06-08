@@ -5,23 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eunoia - Portfólio de Poesias</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
- <link rel="stylesheet" href="css/geral.css" />
+  <link rel="stylesheet" href="css/geral.css" />
+  <style>
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
 
+    .video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.3);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      color: white;
+    }
+  </style>
 </head>
 <body>
+
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="videos/video1.mp4" type="video/mp4" />
+    </video>
+  </div>
+
   <header class="cabecalho">
     <h1 class="titulo">Eunoia</h1>
     <p class="frase">Pensamentos doces em forma de poesia.</p>
   </header>
 
-  
-
-
   <nav class="menu">
     <a href="index.html#inicio">Início</a>
     <a href="poemas.html">Poemas</a>
     <a href="sobre.html">Sobre</a>
-      <a href="playlist.html">Playlist</a>
+    <a href="playlist.html">Playlist</a>
     <a href="contato.html">Contato</a>
   </nav>
 
@@ -37,27 +64,17 @@
 
   <div class="particles-container"></div>
 
-<script>
-  const particlesContainer = document.querySelector('.particles-container');
+  <script>
+    const particlesContainer = document.querySelector('.particles-container');
 
-  for (let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.animationDelay = `${Math.random() * 10}s`;
-    particle.style.animationDuration = `${5 + Math.random() * 10}s`;
-    particlesContainer.appendChild(particle);
-  }
-</script>
-
-  <footer class="rodape-video">
-    <video autoplay muted loop playsinline>
-      <source src="videos/video1.mp4" type="video/mp4" />
-      Seu navegador não suporta vídeo HTML5.
-    </video>
-    <div class="conteudo-rodape">
-      <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
-      <p class="assinatura">Eunoia • 2025</p>
-    </div>
-  </footer>
-  
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 10}s`;
+      particle.style.animationDuration = `${5 + Math.random() * 10}s`;
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
