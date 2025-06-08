@@ -167,3 +167,25 @@ body {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(90, 148, 173, 0.6);
 }
+.contato-formulario select {
+  padding: 15px;
+  background: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: #f1f1f1;
+  font-size: 1em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contato-formulario select:focus {
+  border-color: #88c0d0;
+  box-shadow: 0 0 8px 2px #88c0d0;
+  outline: none;
+}
+
+.erro {
+  color: #ff4d4d;
+  font-size: 0.9em;
+  margin: 4px 0 8px 0;
+  display: block;
+}

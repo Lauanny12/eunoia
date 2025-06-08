@@ -4,52 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contato - Eunoia</title>
-  <link rel="stylesheet" href="css/contato.css" />
   <link rel="stylesheet" href="css/geral.css" />
+  <link rel="stylesheet" href="css/contato.css" />
   <style>
-  
-    
-    <nav class="menu">
-    <a href="index.html#inicio">Início</a>
-    <a href="poemas.html">Poemas</a>
-    <a href="sobre.html">Sobre</a>
-      <a href="playlist.html">Playlist</a>
-    <a href="contato.html">Contato</a>
-  </nav>
+    /* Vídeo como plano de fundo fixo */
+    .video-fundo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
 
-    
-    .erro {
-      color: #d10000;
+    /* Garantir que tudo fique visível acima do vídeo */
+    body, .menu, .contato-formulario, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Fundo levemente escurecido para facilitar leitura */
+    .menu, .contato-formulario, footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .conteudo-rodape {
+      color: #ccc;
       font-size: 0.9em;
-      margin: 4px 0 8px 0;
-      display: block;
     }
-    label {
-      display: block;
-      margin-top: 10px;
+
+    .autora {
+      color: #88c0d0;
       font-weight: bold;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
     }
   </style>
 </head>
 <body>
 
+  <!-- Vídeo de fundo -->
+  <video class="video-fundo" autoplay muted loop playsinline>
+    <source src="videos/video1.mp4" type="video/mp4" />
+    Seu navegador não suporta vídeo HTML5.
+  </video>
+
+  <!-- Menu de navegação -->
   <nav class="menu">
     <a href="index.html#inicio">Início</a>
     <a href="poemas.html">Poemas</a>
     <a href="sobre.html">Sobre</a>
+    <a href="playlist.html">Playlist</a>
     <a href="contato.html">Contato</a>
   </nav>
 
+  <!-- Formulário de contato -->
   <section class="contato-formulario">
     <h2>Entre em contato</h2>
     <p>Envie sua mensagem ou poesia! 😊</p>
     <form id="formContato">
-      <label for="nome">Nome completo (Ex: Fulano De Tal)</label>
+      <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="nome" placeholder="Ex: Lauanny Reis Silva" required>
       <span class="erro" id="erroNome"></span>
 
@@ -60,6 +80,16 @@
       <label for="telefone">Telefone (opcional)</label>
       <input type="tel" id="telefone" name="telefone" placeholder="Ex: (63) 91234-5678">
       <span class="erro" id="erroTelefone"></span>
+
+      <label for="motivo">Motivo da mensagem</label>
+      <select id="motivo" name="motivo" required>
+        <option value="">Selecione um motivo</option>
+        <option value="elogio">Elogio</option>
+        <option value="critica">Crítica</option>
+        <option value="poesia">Enviar poesia</option>
+        <option value="outro">Outro</option>
+      </select>
+      <span class="erro" id="erroMotivo"></span>
 
       <label for="mensagem">Mensagem / Poesia</label>
       <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
@@ -77,38 +107,67 @@
     </form>
   </section>
 
+  <!-- Rodapé -->
+  <footer>
+    <div class="conteudo-rodape">
+      <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
+      <p class="assinatura">Eunoia • 2025</p>
+    </div>
+  </footer>
+
+  <!-- Script JavaScript -->
   <script>
+    const campos = document.querySelectorAll("#formContato input, #formContato textarea, #formContato select");
+
+    campos.forEach((campo, index) => {
+      campo.style.opacity = 0;
+      campo.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      campo.style.transform = "translateY(15px)";
+      setTimeout(() => {
+        campo.style.opacity = 1;
+        campo.style.transform = "translateY(0)";
+      }, 150 * index);
+    });
+
+    campos.forEach(campo => {
+      campo.addEventListener("focus", () => {
+        campo.style.boxShadow = "0 0 8px #5a94ad";
+        campo.style.borderColor = "#5a94ad";
+      });
+      campo.addEventListener("blur", () => {
+        campo.style.boxShadow = "none";
+        campo.style.borderColor = "#444";
+      });
+    });
+
     document.getElementById("formContato").addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      // Campos
       const nome = document.getElementById("nome");
       const email = document.getElementById("email");
       const telefone = document.getElementById("telefone");
+      const motivo = document.getElementById("motivo");
       const mensagem = document.getElementById("mensagem");
       const anonimo = document.getElementById("anonimo");
 
-      // Erros
       const erroNome = document.getElementById("erroNome");
       const erroEmail = document.getElementById("erroEmail");
       const erroTelefone = document.getElementById("erroTelefone");
       const erroMensagem = document.getElementById("erroMensagem");
+      const erroMotivo = document.getElementById("erroMotivo");
       const erroAnonimo = document.getElementById("erroAnonimo");
 
-      // Resetar mensagens
-      [erroNome, erroEmail, erroTelefone, erroMensagem, erroAnonimo].forEach(el => el.textContent = "");
+      [erroNome, erroEmail, erroTelefone, erroMensagem, erroMotivo, erroAnonimo].forEach(el => el.textContent = "");
 
       let valido = true;
 
-      // Validação do nome (mínimo 2 palavras, cada uma com inicial maiúscula)
       const nomeCompletoRegex = /^([A-ZÁÉÍÓÚÂÊÎÔÛÃÕ][a-záéíóúâêîôûãõç]+)(\s[A-ZÁÉÍÓÚÂÊÎÔÛÃÕ][a-záéíóúâêîôûãõç]+)+$/;
       if (!nomeCompletoRegex.test(nome.value.trim())) {
-        erroNome.textContent = "Insira seu nome completo com iniciais maiúsculas. Ex: Lauanny Reis Silva";
+        erroNome.textContent = "Insira seu nome completo com iniciais maiúsculas.";
         valido = false;
       }
 
-      // Validação do email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
       if (email.value.trim() === "") {
         erroEmail.textContent = "Email é obrigatório.";
         valido = false;
@@ -117,22 +176,28 @@
         valido = false;
       }
 
-      // Validação da mensagem
       if (mensagem.value.trim().length < 5) {
         erroMensagem.textContent = "Mensagem muito curta.";
         valido = false;
       }
 
-      // Validação do select
-      if (anonimo.value === "") {
-        erroAnonimo.textContent = "Por favor, selecione se deseja ser anônimo(a) ou não.";
+      if (motivo.value === "") {
+        erroMotivo.textContent = "Escolha o motivo da mensagem.";
         valido = false;
       }
 
-      // Se houver erros, não envia
+      if (anonimo.value === "") {
+        erroAnonimo.textContent = "Escolha se deseja ser anônimo(a).";
+        valido = false;
+      }
+
       if (!valido) return;
 
-      // Envia para o FormSubmit
+      const botao = this.querySelector("button");
+      botao.disabled = true;
+      const textoOriginal = botao.textContent;
+      botao.textContent = "Enviando...";
+
       const formData = new FormData(this);
 
       try {
@@ -140,23 +205,17 @@
           method: "POST",
           body: formData
         });
-        window.location.href = "obg.html"; // Redireciona para página de agradecimento
+
+        alert("Mensagem enviada com sucesso! 🌟");
+        window.location.href = "obg.html";
       } catch (error) {
-        alert("Erro ao enviar. Tente novamente mais tarde.");
+        alert("Erro ao enviar. Tente novamente.");
+      } finally {
+        botao.disabled = false;
+        botao.textContent = textoOriginal;
       }
     });
   </script>
-
-  <footer class="rodape-video">
-    <video autoplay muted loop playsinline>
-      <source src="videos/video1.mp4" type="video/mp4" />
-      Seu navegador não suporta vídeo HTML5.
-    </video>
-    <div class="conteudo-rodape">
-      <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
-      <p class="assinatura">Eunoia • 2025</p>
-    </div>
-  </footer>
 
 </body>
 </html>
