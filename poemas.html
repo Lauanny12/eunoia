@@ -806,8 +806,7 @@
         </div>
       </div>
 <main>
-  <section class="poemas-em-destaque">
-    <div class="lista">
+ 
 
  
 
@@ -835,5 +834,20 @@
       botao.textContent = aberto ? "Ler completo" : "Ler menos";
     }
   </script>
+  <script>
+  function expandirPoema(botao) {
+    const item = botao.closest('.item'); 
+    const poemaCompleto = item.querySelector('.poema-completo');
+
+    if (poemaCompleto.style.display === 'block') {
+      poemaCompleto.style.display = 'none';
+      botao.textContent = 'Ler completo';
+    } else {
+      poemaCompleto.style.display = 'block';
+      botao.textContent = 'Ler menos';
+    }
+  }
+</script>
+
 </body>
 </html>
