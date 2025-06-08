@@ -119,3 +119,68 @@ footer video {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+   /* Estilo da seção "Carta" */
+    .carta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #111;
+      padding: 2rem;
+      margin: 3rem auto;
+      gap: 2rem;
+      border-radius: 12px;
+      max-width: 900px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
+
+    }
+
+    .carta-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 800px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.img-carta {
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.texto-carta {
+  max-width: 400px;
+}
+
+.quote {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.sub {
+      font-style: italic;
+      font-size: 1rem;
+      color: #bbb;
+

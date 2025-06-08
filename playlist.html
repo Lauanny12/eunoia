@@ -3,18 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eunoia</title>
+  <title>Playlist - Eunoia</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/geral.css" />
   <link rel="stylesheet" href="css/playlist.css" />
-    <link rel="stylesheet" href="css/geral.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.3);
+    }
+
+    .playlist-container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 100px 20px 50px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .playlist-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .playlist-container p {
+      font-style: italic;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      color: #eee;
+    }
+
+    iframe {
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      transition: transform 0.4s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.02);
+    }
+
+    .citacao {
+      margin-top: 50px;
+      font-size: 1rem;
+      font-style: italic;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
+
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="videos/video1.mp4" type="video/mp4" />
+    Seu navegador não suporta vídeo HTML5.
+  </video>
+
   <header class="cabecalho">
-    <h1 class="titulo">Eunoia </h1>
-    <p class="frase">Uma trilha sonora para embalar os pensamentos.</p>
+    <h1 class="titulo">Eunoia</h1>
+    <p class="frase">Pensamentos doces em forma de poesia.</p>
   </header>
 
-   <nav class="menu">
+  <nav class="menu">
     <a href="index.html#inicio">Início</a>
     <a href="poemas.html">Poemas</a>
     <a href="sobre.html">Sobre</a>
@@ -22,26 +87,20 @@
     <a href="contato.html">Contato</a>
   </nav>
 
-  <main class="conteudo-playlist">
-    <section class="bloco-playlist">
-      <h2>🌌 Trilha Sonora</h2>
-      <p>Ouça enquanto lê, sente ou escreve. Cada música foi escolhida para tocar fundo na alma.</p>
-      <div class="spotify">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-    </section>
-  </main>
+  <main class="playlist-container">
+    <h2>Sinta a vibe 🌙</h2>
+    <p>Uma trilha sonora para acompanhar sua leitura ou escrita poética.</p>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-  <footer class="rodape-video">
-    <video autoplay muted loop playsinline>
-      <source src="videos/video1.mp4" type="video/mp4" />
-      Seu navegador não suporta vídeo HTML5.
-    </video>
-    <div class="conteudo-rodape">
-      <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
-      <p class="assinatura">Eunoia • 2025</p>
-    </div>
-  </footer>
+   
+  <section class="carta">
+  <img src="img/i-wanna-be-yours.jpg" alt="Imagem estilo Arctic Monkeys" />
+  <div class="texto-carta">
+    <p class="quote">"Let me be your coffee pot..."</p>
+    <p class="sub">…porque tem dias que eu só queria caber num verso seu. 🖤</p>
+  </div>
+</section>
+
 
 </body>
 </html>
