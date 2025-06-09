@@ -238,12 +238,13 @@ body, html {
       font-style: italic;
       color: #ccc;
     }
-/* playlist fixa  */
-.playlist-fixa {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  border-radius: 12px;
-  z-index: 9999;
-}
+    /* playlist fixa  */
+      .playlist-fixa {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        border-radius: 12px;
+        z-index: 9999;
+      }
+
 
