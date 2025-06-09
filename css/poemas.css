@@ -1,0 +1,221 @@
+/* === LISTA DE CARDS === */
+.lista {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 50px 20px;
+  justify-items: center;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 1024px) {
+  .lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lista {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === CARDS === */
+.item {
+  position: relative;
+  background: #222;
+  border: 1px solid var(--cor-cinza-médio);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Animação com delay */
+.item:nth-child(1) { animation-delay: 0.1s; }
+.item:nth-child(2) { animation-delay: 0.2s; }
+.item:nth-child(3) { animation-delay: 0.3s; }
+.item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Imagem com blur e escurecimento */
+.imagem-poema {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagem-poema img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px) brightness(0.6);
+  transform: scale(1.1);
+}
+
+/* Overlay no hover */
+.imagem-poema::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.item:hover .imagem-poema::after {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Texto sobreposto */
+.texto-sobreposto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  z-index: 2;
+}
+
+.titulo-poema {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.autor-poema, .trecho-poema {
+  font-size: 0.9em;
+  color: #ccc;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.trecho-poema {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.1em;
+}
+
+/* Texto dentro do card */
+.texto-sobre, .item p {
+  padding: 20px;
+  color: #ddd;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+/* Autor */
+.autor-poema {
+  padding: 0 20px;
+  color: #aaa;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-top: -10px;
+}
+
+/* Poema completo */
+.poema-completo {
+  display: none;
+  padding: 0 20px 20px;
+  color: #ccc;
+  font-size: 0.95em;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.poema-completo p {
+  white-space: pre-line;
+  line-height: 2;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* Botão */
+.leia-mais {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 20px 20px;
+  text-decoration: underline;
+  font-size: 0.95em;
+}
+
+.leia-mais:hover,
+.leia-mais:focus {
+  color: #eee;
+  outline: none;
+}
+
+/* === ANIMAÇÃO === */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === RODAPÉ COM VÍDEO === */
+footer.rodape-video {
+  position: relative;
+  width: 100vw;
+  margin: 0;
+  padding: 60px 20px 60px;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+footer.rodape-video video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.conteudo-rodape {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+  padding: 10px;
+}
+
+.autora {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.assinatura {
+  font-size: 0.9em;
+  color: #888;
+}
