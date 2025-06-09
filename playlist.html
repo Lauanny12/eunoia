@@ -51,6 +51,58 @@
     </div>
   </div>
 </section>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>SPA - Eunoia</title>
+  <style>
+    .playlist-fixa {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 80px;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button onclick="carregar('inicio')">Início</button>
+    <button onclick="carregar('poemas')">Poemas</button>
+    <button onclick="carregar('sobre')">Sobre</button>
+    <button onclick="carregar('playlist')">Playlist</button>
+  </nav>
+
+  <main id="conteudo">
+    <h1>Bem-vindo ao Eunoia!</h1>
+  </main>
+
+  <iframe class="playlist-fixa" 
+    src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" 
+    frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
+
+  <script>
+    function carregar(pagina) {
+      let conteudo = '';
+      if(pagina === 'inicio') {
+        conteudo = '<h1>Início</h1><p>Seja bem-vindo ao Eunoia.</p>';
+      } else if(pagina === 'poemas') {
+        conteudo = '<h1>Poemas</h1><p>Aqui estão seus poemas.</p>';
+      } else if(pagina === 'sobre') {
+        conteudo = '<h1>Sobre</h1><p>Sobre o site Eunoia.</p>';
+      } else if(pagina === 'playlist') {
+        conteudo = '<h1>Playlist</h1><p>A trilha sonora perfeita para poesia.</p>';
+      }
+      document.getElementById('conteudo').innerHTML = conteudo;
+    }
+  </script>
+
+
 
 
      <div class="conteudo-rodape">
