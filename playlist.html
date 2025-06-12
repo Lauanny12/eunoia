@@ -7,7 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/geral.css" />
   <link rel="stylesheet" href="css/playlist.css" />
-  
+  <style>
+    .playlist-fixa {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 80px;
+      z-index: 9999;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,91 +41,38 @@
   <main class="playlist-container">
     <h2>Sinta a vibe 🌙</h2>
     <p>Uma trilha sonora para acompanhar sua leitura ou escrita poética.</p>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-
-   
-    <iframe class="playlist-fixa" 
+    
+    <iframe style="border-radius:12px" 
       src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" 
-      width="300" height="80" frameBorder="0" 
+      width="100%" height="352" frameBorder="0" allowfullscreen="" 
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
       loading="lazy">
     </iframe>
 
-  <section class="carta">
-  <div class="carta-conteudo">
-    <img src="img/img6.jpeg" alt="Imagem estilo Arctic Monkeys" class="img-carta"/>
-    <div class="texto-carta">
-      <p class="quote">"Let me be your coffee pot..."</p>
-      <p class="sub">…porque tem dias que eu só queria caber num verso seu. 🖤</p>
-    </div>
-  </div>
-</section>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>SPA - Eunoia</title>
-  <style>
-    .playlist-fixa {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      width: 300px;
-      height: 80px;
-      z-index: 9999;
-    }
-  </style>
-</head>
-<body>
+    <iframe class="playlist-fixa" 
+      src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" 
+      frameBorder="0" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
 
-
-
-  <main id="conteudo">
-    <h1>Bem-vindo ao Eunoia!</h1>
+    <section class="carta">
+      <div class="carta-conteudo">
+        <img src="img/img6.jpeg" alt="Imagem estilo Arctic Monkeys" class="img-carta"/>
+        <div class="texto-carta">
+          <p class="quote">"Let me be your coffee pot..."</p>
+          <p class="sub">…porque tem dias que eu só queria caber num verso seu. 🖤</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <iframe class="playlist-fixa" 
-    src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" 
-    frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy">
-  </iframe>
-
-  <script>
-    function carregar(pagina) {
-      let conteudo = '';
-      if(pagina === 'inicio') {
-        conteudo = '<h1>Início</h1><p>Seja bem-vindo ao Eunoia.</p>';
-      } else if(pagina === 'poemas') {
-        conteudo = '<h1>Poemas</h1><p>Aqui estão seus poemas.</p>';
-      } else if(pagina === 'sobre') {
-        conteudo = '<h1>Sobre</h1><p>Sobre o site Eunoia.</p>';
-      } else if(pagina === 'playlist') {
-        conteudo = '<h1>Playlist</h1><p>A trilha sonora perfeita para poesia.</p>';
-      }
-      document.getElementById('conteudo').innerHTML = conteudo;
-    }
-  </script>
-
-
-
-
-     <div class="conteudo-rodape">
+  <footer>
+    <div class="conteudo-rodape">
       <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
       <p class="assinatura">Eunoia • 2025</p>
     </div>
   </footer>
-
-  <iframe class="playlist-fixa" 
-    src="https://open.spotify.com/embed/playlist/3y8LIJlEKAS6WfC16l9pCv?utm_source=generator" 
-    width="300" height="80" frameBorder="0" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-    loading="lazy">
-  </iframe>
-
-</body>
-</html>
-
-
 
 </body>
 </html>
