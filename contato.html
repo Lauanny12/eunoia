@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/geral.css" />
   <link rel="stylesheet" href="css/contato.css" />
   <style>
-    /* Vídeo como plano de fundo fixo */
     .video-fundo {
       position: fixed;
       top: 0;
@@ -18,13 +17,11 @@
       z-index: -1;
     }
 
-    /* Garantir que tudo fique visível acima do vídeo */
     body, .menu, .contato-formulario, footer {
       position: relative;
       z-index: 1;
     }
 
-    /* Fundo levemente escurecido para facilitar leitura */
     .menu, .contato-formulario, footer {
       background-color: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
@@ -68,7 +65,10 @@
   <section class="contato-formulario">
     <h2>Entre em contato</h2>
     <p>Envie sua mensagem ou poesia! 😊</p>
-    <form id="formContato">
+    <form id="formContato" action="https://formsubmit.co/lauanny.silva2@estudante.ifto.edu.br" method="POST">
+      <input type="hidden" name="_next" value="obg.html">
+      <input type="hidden" name="_captcha" value="false">
+
       <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="nome" placeholder="Ex: Fulano De Tal" required>
       <span class="erro" id="erroNome"></span>
@@ -167,7 +167,7 @@
         valido = false;
       }
 
-      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (email.value.trim() === "") {
         erroEmail.textContent = "Email é obrigatório.";
         valido = false;
@@ -201,7 +201,7 @@
       const formData = new FormData(this);
 
       try {
-        await fetch("https://formsubmit.co/lauanny.silva2@estudante.ifto.edu.br", {
+        await fetch(this.action, {
           method: "POST",
           body: formData
         });
@@ -215,6 +215,7 @@
         botao.textContent = textoOriginal;
       }
     });
+  </script>
 
 </body>
 </html>
