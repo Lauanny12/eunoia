@@ -199,30 +199,3 @@
 .quadro-foto:hover img {
   filter: brightness(1);
 }
-
-/* Legenda flutuante por cima da imagem */
-.legenda-foto {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px 8px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  color: #f1f1f1;
-  font-size: 0.95em;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .quadro-foto {
-    width: 150px;
-    height: 150px;
-  }
-
-  .legenda-foto {
-    font-size: 0.85em;
-    padding: 6px;
-  }
-}

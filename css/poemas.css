@@ -181,7 +181,7 @@ footer.rodape-video {
   position: relative;
   width: 100vw;
   margin: 0;
-  padding: 60px 20px 60px;
+  padding: 60px 20px;
   background: #000;
   color: #fff;
   overflow: hidden;
@@ -191,7 +191,8 @@ footer.rodape-video {
 
 footer.rodape-video video {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -207,15 +208,30 @@ footer.rodape-video video {
   align-items: center;
   justify-content: center; 
   text-align: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 .autora {
-  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  color: #fff;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .assinatura {
   font-size: 0.9em;
-  color: #888;
+  color: #bbb;
+  font-style: italic;
+}
+
+/* Responsividade do rodapé */
+@media (max-width: 600px) {
+  .autora {
+    font-size: 1em;
+  }
+
+  .assinatura {
+    font-size: 0.8em;
+  }
 }
