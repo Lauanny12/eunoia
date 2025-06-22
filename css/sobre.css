@@ -81,12 +81,14 @@
   font-style: italic;
 }
 
-/* === BOTÕES DE CONTATO CENTRALIZADOS === */
+/* === BOTÕES DE CONTATO CENTRALIZADOS E LADO A LADO === */
 .botoes-contato {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 30px;
+  flex-wrap: wrap;
   margin-top: 30px;
 }
 
@@ -126,7 +128,7 @@
 .mural .pin {
   break-inside: avoid;
   margin-bottom: 20px;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
@@ -134,7 +136,7 @@
 .mural .pin img {
   width: 100%;
   display: block;
-  border-radius: 12px;
+  border-radius: 20px;
   transition: transform 0.3s ease, filter 0.3s ease;
   filter: brightness(0.9);
 }
@@ -179,7 +181,7 @@
   position: relative;
   width: 200px;
   height: 200px;
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
   margin: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
@@ -192,6 +194,7 @@
   object-fit: cover;
   transition: transform 0.4s ease;
   filter: brightness(0.85);
+  border-radius: 24px;
 }
 
 .quadro-foto:hover {
@@ -233,6 +236,10 @@
     width: 80%;
     justify-content: center;
     text-align: center;
+  }
+
+  .botoes-contato {
+    flex-direction: column;
   }
 
   .mural img {
