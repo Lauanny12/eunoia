@@ -23,6 +23,28 @@
       <a href="playlist.html">Playlist</a>
     <a href="contato.html">Contato</a>
   </nav>
+  <script>
+  function expandirPoema(botao) {
+    const item = botao.closest('.item'); 
+    const poemaCompleto = item.querySelector('.poema-completo');
+
+    if (poemaCompleto.style.display === 'block') {
+      poemaCompleto.style.display = 'none';
+      botao.textContent = 'Ler completo';
+    } else {
+      poemaCompleto.style.display = 'block';
+      botao.textContent = 'Ler menos';
+    }
+  }
+  </script>
+  <script>
+    function expandirPoema(botao) {
+      const poema = botao.nextElementSibling;
+      const aberto = poema.style.display === "block";
+      poema.style.display = aberto ? "none" : "block";
+      botao.textContent = aberto ? "Ler completo" : "Ler menos";
+    }
+  </script>
 
   <main>
    <main>
@@ -1075,35 +1097,12 @@
           </p>
         </div>
 
- <script>
-  function expandirPoema(botao) {
-    const item = botao.closest('.item'); 
-    const poemaCompleto = item.querySelector('.poema-completo');
-
-    if (poemaCompleto.style.display === 'block') {
-      poemaCompleto.style.display = 'none';
-      botao.textContent = 'Ler completo';
-    } else {
-      poemaCompleto.style.display = 'block';
-      botao.textContent = 'Ler menos';
-    }
-  }
-  </script>
-  <script>
-    function expandirPoema(botao) {
-      const poema = botao.nextElementSibling;
-      const aberto = poema.style.display === "block";
-      poema.style.display = aberto ? "none" : "block";
-      botao.textContent = aberto ? "Ler completo" : "Ler menos";
-    }
-  </script>
-
-  <footer class="rodape-video">
+<footer class="rodape-video">
     <video autoplay muted loop playsinline>
       <source src="videos/video1.mp4" type="video/mp4" />
       Seu navegador não suporta vídeo HTML5.
     </video>
-   <div class="conteudo-rodape">
+    <div class="conteudo-rodape">
       <p>Feito com 💙 por <span class="autora">Lauanny Silva</span></p>
       <p class="assinatura">Eunoia • 2025</p>
     </div>
